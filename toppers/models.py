@@ -3,27 +3,16 @@ from django.utils import timezone
 # Create your models here.
 from django.core.validators import MaxValueValidator, MinValueValidator
 class Branch(models.Model):
-    sol_id=models.IntegerField(default=0000)
+    sol_id=models.IntegerField(default=0)
     branch_name=models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.branch_name}"
 
-#
-# class BulletinBoard(models.Model):
-#     bulletin_date=models.DateField(default=timezone.now,blank=True,null=True)
-#     category=models.CharField(max_length=500)
-#     def __str__(self):
-#         return f"{self.bulletin_date}"
-
-
-
-
-
 
 class BranchManager(models.Model):
     branch=models.OneToOneField(Branch,on_delete=models.DO_NOTHING)
-    employee_code=models.IntegerField(default=0043,primary_key=True)
+    employee_code=models.IntegerField(default=0,primary_key=True)
     # bboard=models.ForeignKey(BranchBoard,on_delete=models.CASCADE,blank=True,null=True,related_name="bboard")
     name=models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/',blank=True,null=True)
