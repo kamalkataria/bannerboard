@@ -1,0 +1,129 @@
+{% load static %}
+{% load fontawesome_5 %}
+{% load crispy_forms_tags %}
+{% load bulma_tags %}
+{%load humanize %}
+{% load google_fonts %}
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Bulletin Board</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="{% static 'fonts/pacifico.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/abrilfatface.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/roboto.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/kablammo.css' %}">
+
+    <link rel="stylesheet" href="{% static 'fonts/kablammo.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/borel.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/tektur.css' %}">
+
+
+{% fontawesome_5_static %}
+<style>
+    @media (min-width: 1200px) {
+    .container{
+        max-width: 1700px!important;
+    }
+}
+    .inner{
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  padding: 50px;
+}
+     .inner1{
+  background-color: rgba(255, 127, 80, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  padding: 50px;
+}
+    .inner2{
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+    .blurry{
+    -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+    }
+
+
+
+</style>
+</head>
+<body style="padding-top:50px!important;background-image:url('media/{{theme.body_bg_image}}');background:repeat:no repeat;background-size:cover;">
+
+<div class="container border p-3" style="border:1px solid black;box-shadow: 8px 8px 30px -10px black;">
+<div class="row" style="margin:10px;vertical-align:middle;background-image:url('/media/{{theme.center_image}}');background-size: cover;background-repeat:no;">
+<div class="col-sm-2">
+    <div class="container inner2" style="margin-top:50%;width:100%;height:auto;">
+        <img class="img img-responsive" style="box-shadow: 10px 10px 10px 12px black;opacity:0.4;vertical-align:middle;" src="/media/{{theme.left_image}}"/>
+</div>
+
+</div>
+    <div class="col-sm-8">
+        <!--    <img style="opacity:0.3;position: absolute;left: 0;top: 0;width: 100%;height: 350px;;" src="{% static 'toppers/arrowhit.jpg' %}"/>-->
+    <div class="container blurry" style="padding:10px;border-radius:20px;background-color:{{center_content_bg_rgba}}!important; box-shadow: 5px 5px 30px -2px black;margin:10px!important;text-align:center;">
+
+        <img class="img img-responsive" style="border-radius:20px;padding:10px!important;width:100%;" src="/media/{{theme.org_image}}"/>
+        <div>
+        <p class="{{category_property}} tag" style="font-size:1.9em;margin-top:10px!important;margin:10px auto;color:{{category_text_color}}!important">{{bmx.0.category}} on {{bmx.0.datex}}</p>
+        </div>
+        <p class="{{title_property}}" style="font-family:'Pacifico';font-size:2em;margin-top:10px!important;margin:20px auto;color:{{title_text_color}}">
+            <span class="fa fa-star" style="color:{{title_text_color}};"></span>Star Performers of The Day<span class="fa fa-star" style="color:{{title_text_color}}"></span></p>
+    </div>
+
+    </div>
+
+    <div class="col-sm-2 ">
+        <div class="container blurry" style="vertical-align:middle;background:{{right_content_bg_rgba}};box-shadow: 10px 10px 20px -5px black;width:100%;height:60%;padding:10%!important;margin-top:1px!Important;">
+         <p class="text-center" style="vertical-align:middle;font-family:roboto;text-align:center;vertical-align:middle!important;font-weight:bold;color:{{right_content_fg_rgba}};!important;font-size:2.5em;margin:0;">
+            <span class="fa fa-star" style="color:{{right_content_fg_rgba}};"></span>{{theme.content_right}}<span class="fa fa-star" style="color:{{right_content_fg_rgba}};"></span></p></div>
+    </div>
+    </div>
+
+<div class="" style="padding:0!important;background-image:url('/media/{{theme.bg_image}}');display:block;margin:auto!important;margin-right:auto!important;text-align:center;">
+
+    <div class="row" style="box-shadow: 5px 10px 30px 10px white;background-image: linear-gradient(to right,rgba(255,255,255,0.9),rgba(255,255,255,0.6),rgba(255,255,255,0.9));margin:0!important;width:100%!important;height:100%!important;block-size:fit-content!important;">
+
+
+    {% for bbbm in bbbm %}
+
+
+        <div class="col-sm-2" style="">
+            <div class="card" style="box-shadow: 5px 8px 20px -5px {{bm_box_shadowrgba}};border:solid 1px coral!important;border-radius:10px!important;width: 25rem;height:auto;;margin:10px;">
+                <div class="card-header" style="border-radius:10px!important;padding:5px!important;background:{{branch_bg_color}};">
+      <p class="card-title text-center" style="margin:auto;font-size:1.5em;color:{{branch_fg_color}};">
+          <span style="width:100%;" class="text-default">{{bbbm.bm.branch}}</span>
+      </p>
+  </div>
+      <div class="card-body" style="background:white;margin:5px;padding:05px!important;">
+
+  <img src="media/{{bbbm.bm.image|default:'images/bupgblogo.png'}}" style="border:solid 2px coral;height:200px!important;margin:0!important;" class="rounded card-img-top">
+      <p class="card-text" style="vertical-align:center;border-top:0;border-bottom:solid 3px coral;font-family:sacramento;font-size:1.3em;font-weight:bold;color:{{bm_name_color}};margin:0!important;padding:0!important;;"> {{bbbm.bm.name}}</p>
+
+
+  </div>
+                <div class="card-footer" style="border-radius:20px!important;background:{{amount_bg_color}};">
+
+                    <p class="text text-center" style="margin:auto;font-family:tektur;font-weight:bold;font-size:1.5em;color:{{amount_fg_color}};">{{bbbm.amt}} Lakh</p>
+
+  </div>
+
+</div>
+
+        </div>
+
+    {%endfor%}
+    </div>
+</div>`
+</div>
+
+</body>
+</html>
