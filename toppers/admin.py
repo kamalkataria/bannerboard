@@ -31,13 +31,3 @@ class BranchBoardInline(StackedInline):
 @admin.register(BranchBoard)
 class BranchBoardAdmin(admin.ModelAdmin):
     inlines = [BranchBoardBMInline,]
-
-#
-# @admin.register(BulletinBoard)
-# class BulletinBoardAdmin(admin.ModelAdmin):
-#     list_display = ("bulletin_date",)
-#     inlines = [BranchBoardInline,]
-#
-#
-#
-
